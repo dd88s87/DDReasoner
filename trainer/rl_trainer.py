@@ -117,11 +117,11 @@ class RLTrainer(BaseTrainer):
             idx = batch['idx']
             batch_sample = idx.shape[0]
             sample_num = [self.config.init_sample_num]*batch_sample if epoch==0 else self.get_sample_num(idx, batch_sample, logs, self.config.dynamic_sample_num)
-            image_size, channels = get_input_size(cfg.config.task)
+            image_size, channels = get_input_size(self.config.config.task, self.config.config.size)
             puzzle = torch.cat([batch['puzzle'][i].repeat([sample_num[i],1,1,1]) for i in range(batch_sample)], dim=0).view(-1, channels, image_size[0], image_size[1]).to(self.config.device)
             mask = torch.cat([batch['mask'][i].repeat([sample_num[i],1,1,1]) for i in range(batch_sample)]).view(-1, channels, image_size[0], image_size[1]).to(self.config.device)
             if self.config.config.task=="sudoku" or self.config.config.task=="warcraft":
-                solution = torch.cat([batch['sol'][i].repeat([sample_num[i],1,1]) for i in range(batch_sample)]).view(-1, 9, 9).to(self.config.device)
+                solution = torch.cat([batch['sol'][i].repeat([sample_num[i],1,1]) for i in range(batch_sample)]).view(-1, image_size[0], image_size[1]).to(self.config.device)
             elif self.config.config.task=="sushi":
                 solution = torch.cat([batch['sol'][i].repeat([sample_num[i],1]) for i in range(batch_sample)]).to(self.config.device)
             else:

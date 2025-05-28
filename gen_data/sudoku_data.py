@@ -1,5 +1,4 @@
 from genericpath import isdir
-from tabnanny import check
 import numpy as np
 import time
 import statistics
@@ -9,8 +8,6 @@ from sudoku_solver.board import Board
 import torch
 
 import random
-import shutil
-import multiprocessing as mp
 import argparse
 
 try:
@@ -103,7 +100,7 @@ def format_conversion(data_name,data_new_name):
     limit: 100000 data points
     '''
     print('Converting input format')
-    data_in = f'data/original_data/{data_name}' 
+    data_in = f'../../diffusion_RL/gen_data/original_data/{data_name}' 
     data_out = f'data/{data_new_name}/{data_new_name}'
     file_in = open(data_in, 'r')
     lines = file_in.readlines()

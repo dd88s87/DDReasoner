@@ -476,3 +476,4 @@ class GaussianDiffusion(nn.Module):
         b, c, h, w, device, h_img_size, w_img_size = *img.shape, img.device, self.image_size[0], self.image_size[1]
         assert h == h_img_size and w == w_img_size, f'height and width of image must be {img_size}'
         t = torch.randint(0, self.num_timesteps, (b,), device=device).long()
+        return self.p_losses(img, t, context, mask, *args, **kwargs)

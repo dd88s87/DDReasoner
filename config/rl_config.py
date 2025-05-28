@@ -79,6 +79,5 @@ class RL_Config:
             'config': vars(self.config),  # Make sure config is also a dictionary
             'device': str(self.device),  # Convert device to string for better readability
             'dataset': self.config.dataset,
-            'split': self.split
         }
         return config_dict

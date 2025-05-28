@@ -47,7 +47,7 @@ if __name__ == "__main__":
             loss.append(result['loss'])
             for key,value in result.items():
                 wandb.log({key: value}, commit=True)
-        if min_loss > np.mean(loss):
-            min_loss = np.mean(loss)
+        if min_loss > numpy.mean(loss):
+            min_loss = numpy.mean(loss)
             trainer.save_model(root_path, "best")
             

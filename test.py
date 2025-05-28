@@ -114,6 +114,7 @@ def compute_rewards_warcraft(x, solutions):
     pred = torch.sign(x[:,1])
 
     rewards = []
+    hammings = []
     consistents = []
     
     for i in range(0, n_samples):
@@ -232,7 +233,7 @@ if __name__ == "__main__":
                 consistents = rewards
             elif config.config.task=="warcraft":
                 rewards, correct_rates = compute_rewards_warcraft(x, solution)
-                consistents = rewards
+                consistents = correct_rates
             elif config.config.task=="grid":
                 rewards, correct_rates, consistents = compute_rewards_grid(x, solution_onehot)
             elif config.config.task=="sushi":
@@ -241,4 +242,4 @@ if __name__ == "__main__":
             total_correct.extend(correct_rates)
             total_consistent.extend(consistents)
     
-    print(config.config.dataset, ckpt_path, "avg reward:", np.mean(total_reward), "  avg correct rates:", np.mean(total_correct), "  avg consistents:", np.mean(total_consistent))
+    print(config.config.dataset, config.ckpt_path, "avg reward:", np.mean(total_reward), "  avg correct rates:", np.mean(total_correct), "  avg consistents:", np.mean(total_consistent))

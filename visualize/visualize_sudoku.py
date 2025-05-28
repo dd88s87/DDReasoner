@@ -29,7 +29,7 @@ def plot_sudoku(grid, save_path=None):
             num = grid[y, x]
             if num != 0:
                 ax.text(x + 0.5, 8.5 - y, str(num),
-                        va='center', ha='center', fontsize=28, color="red")
+                        va='center', ha='center', fontsize=28)
             else:
                 ax.text(x + 0.5, 8.5 - y, str(num),
                         va='center', ha='center', fontsize=28)
