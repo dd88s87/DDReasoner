@@ -19,7 +19,7 @@ def get_input_size(task, size):
         image_size = (1, 10)
         channels = 10
     elif task=="warcraft":
-        image_size = (12, 12)
+        image_size = (size, size)
         channels = 2
     return image_size, channels
 

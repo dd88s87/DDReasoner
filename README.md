@@ -2,6 +2,8 @@
 
 Official codebase for the paper:  **Constraints-Guided Diffusion Reasoner for Neuro-Symbolic Learning**
 
+[Our codebase is available at: https://anonymous.4open.science/r/DDReasoner-1D80]
+
 ---
 
 ## 🧠 Overview
@@ -20,18 +22,18 @@ pip install -r requirements.txt
 
 
 
-## 🚀 SFT & RL Training
+## 🚀 SL & RL Training
 
-### 🔧 SFT training
+### 🔧 SL training
 
 #### Scripts for different tasks
 
 ```bash
-python sft.py --task sudoku --dataset big_kaggle # for Sudoku
-python sft.py --task maze --size 10 --train_ratio 0.9 --valid_ratio 0.0 # for Maze
-python sft.py --task warcraft --train_ratio 1.0 # for Warcraft Shortest Path
-python sft.py --task grid --train_ratio 0.6 --valid_ratio 0.2 --test_ratio 0.2 # for Simple Path Prediction
-python sft.py --task sushi --train_ratio 0.6 --valid_ratio 0.2 --test_ratio 0.2 # for Preference Learning
+python sl.py --task sudoku --dataset big_kaggle # for Sudoku
+python sl.py --task maze --size 10 --train_ratio 0.9 --valid_ratio 0.0 # for Maze
+python sl.py --task grid --train_ratio 0.6 --valid_ratio 0.2 --test_ratio 0.2 # for Simple Path Prediction
+python sl.py --task sushi --train_ratio 0.6 --valid_ratio 0.2 --test_ratio 0.2 # for Preference Learning
+python sl.py --task warcraft --train_ratio 1.0 --size 30 # for minimum-cost path finding
 ```
 
 #### 🔧 RL training
@@ -39,9 +41,9 @@ python sft.py --task sushi --train_ratio 0.6 --valid_ratio 0.2 --test_ratio 0.2 
 ```bash
 python rl.py --task sudoku --dataset big_kaggle --train_ratio 0.9 --valid_ratio 0.0 # for Sudoku
 python rl.py --task maze --size 10 --train_ratio 0.9 --valid_ratio 0.0 # for Maze
-python rl.py --task warcraft --train_ratio 1.0 # for Warcraft Shortest Path
 python rl.py --task grid --train_ratio 0.6 --valid_ratio 0.2 --test_ratio 0.2 # for Simple Path Prediction
 python rl.py --task sushi --train_ratio 0.6 --valid_ratio 0.2 --test_ratio 0.2 # for Preference Learning
+python rl.py --task warcraft --train_ratio 1.0 --size 30 # for minimum-cost path finding
 ```
 
 
@@ -58,20 +60,19 @@ python test.py --task sudoku --dataset big_kaggle --train_ratio 0.9 --valid_rati
 ```bash
 python ./visualize/visualize_sudoku.py.py # for Sudoku
 python ./visualize/visualize_maze.py.py # for Maze
-# for Warcraft Shortest Path, run warcraft_visualization.ipynb
 ```
 
 
 
 ## ✏️ Examples
 
-We provide some examples where problems, initially unsolved by the SFT training, are successfully addressed by our RL approach.
+We provide some examples where problems, initially unsolved by SL training, are successfully addressed by our RL approach.
 
 ### Sudoku
 
-![sudoku_example](./imgs/sudoku_example.png)
+![sudokucase](./imgs/sudokucase.png)
 
 ### Maze
 
-![maze_example](./imgs/maze_example.png)
+![mazecase](./imgs/mazecase.png)
 

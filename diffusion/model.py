@@ -181,7 +181,7 @@ class Unet(nn.Module):
         # dim_mults=(1, 1, 1, 1), # for Sudoku big_kaggle & multiple_sol
         # dim_mults=(1, 1, 1), # for Sudoku satnet_data
         # dim_mults=(1, 2, 4, 8), # for Sudoku minimal_17, grid & sushi
-        # dim_mults=(1, 2), # for warcraft_shortest_path
+        # dim_mults=(1, 2), # for minimum-cost path finding
         dim_mults=(1, 2, 2), # for Maze
         channels = 9,
         device = 'cpu',

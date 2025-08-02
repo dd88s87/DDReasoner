@@ -4,7 +4,7 @@ import pickle
 import torch
 import pprint
 
-class SFT_Config:
+class SL_Config:
     def __init__(self, args):
         # train params ⬇
         self.train_batch_size = 1024
@@ -23,7 +23,7 @@ class SFT_Config:
         # seed ⬇
         self.seed = 3407
         # name
-        self.name = "SFT"
+        self.name = "SL"
 
         args.cuda = args.cuda and torch.cuda.is_available()
         device = torch.device("cuda" if args.cuda else "cpu")

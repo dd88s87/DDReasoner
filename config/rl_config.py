@@ -11,6 +11,13 @@ maze_samples = {
     20 : (2, 0, 1, 1)
 }
 
+warcraft_samples = {
+    12 : (64, 8, 16, 40),
+    18 : (16, 2, 4, 10),
+    24 : (8, 1, 2, 5),
+    30 : (4, 1, 1, 2)
+}
+
 class RL_Config:
     def __init__(self, args):
         # sample params ⬇
@@ -24,6 +31,9 @@ class RL_Config:
         elif args.task=="maze":
             self.sample_batch_size = maze_samples[args.size][0]
             self.dynamic_sample_num = [256] * maze_samples[args.size][1] + [128] * maze_samples[args.size][2] + [64] * maze_samples[args.size][3]
+        elif args.task=="warcraft":
+            self.sample_batch_size = warcraft_samples[args.size][0]
+            self.dynamic_sample_num = [256] * warcraft_samples[args.size][1] + [128] * warcraft_samples[args.size][2] + [64] * warcraft_samples[args.size][3]
         else:
             self.sample_batch_size = 64
             self.dynamic_sample_num = [256]*8+[128]*16+[64]*40

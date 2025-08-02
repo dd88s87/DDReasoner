@@ -1,7 +1,7 @@
 import os
 os.environ["OMP_NUM_THREADS"] = "18"
 
-from config.sft_config import SFT_Config
+from config.sl_config import SL_Config
 from symbolic import dataset
 from symbolic.models import get_model
 from symbolic.args import init_argparse
@@ -20,13 +20,13 @@ torch.manual_seed(42)
 if torch.cuda.is_available():
     torch.cuda.manual_seed_all(42)
 
-class SFTTrainer(BaseTrainer):
+class SLTrainer(BaseTrainer):
     """
-    The SFTTrainer to optimise diffusion models.
+    The SLTrainer to optimise diffusion models.
     """
     def __init__(self, ckpt_path=None):
         self.args = init_argparse()
-        self.config = SFT_Config(self.args)
+        self.config = SL_Config(self.args)
         self.generate_model = self._create_pipline(ckpt_path)
 
         params = list(self.generate_model.parameters())

@@ -100,11 +100,11 @@ def is_connected_warcraft(grid):
         for dx, dy in directions:
             dfs(x + dx, y + dy)
 
-    if grid[0, 0] != 1 or grid[11, 11] != 1:
+    if grid[0, 0] != 1 or grid[-1, -1] != 1:
         return False
 
     dfs(0, 0)
-    return visited[11, 11].item()
+    return visited[-1, -1].item()
 
 def compute_rewards_warcraft(x, solutions):
     '''

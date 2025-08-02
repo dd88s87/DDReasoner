@@ -14,7 +14,7 @@ Run `python gen_data/sudoku_data.py --solver default` to generate the data. With
 Install maze-dataset (instructions [here](https://github.com/understanding-search/maze-dataset)).
 Run `python gen_data/maze_data.py`
 
-3- Warcraft Shortest Path
+3- Minimum-Cost Path Finding
 Download ([here] https://edmond.mpg.de/dataset.xhtml?persistentId=doi:10.17617/3.YJCQ5S)
 
 4- Simple Path Prediction & Preference Learning

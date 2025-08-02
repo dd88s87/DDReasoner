@@ -1,4 +1,4 @@
-from trainer.sft_trainer import SFTTrainer
+from trainer.sl_trainer import SLTrainer
 from tqdm import tqdm as tq
 import os
 import wandb
@@ -14,7 +14,7 @@ def set_seed(seed):
 
 if __name__ == "__main__":
     # trainer init
-    trainer = SFTTrainer()
+    trainer = SLTrainer()
     # set seed
     set_seed(trainer.config.seed)
     pprint.pprint(trainer.config.to_dict())
@@ -30,6 +30,8 @@ if __name__ == "__main__":
         root_path = os.path.join("exp", trainer.config.config.dataset+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate))
     elif trainer.config.config.task=="maze":
         root_path = os.path.join("exp", "maze"+str(trainer.config.config.size)+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate))
+    elif trainer.config.config.task=="warcraft":
+        root_path = os.path.join("warcraft", trainer.config.config.task+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_size"+str(trainer.config.config.size))
     else:
         root_path = os.path.join("exp", trainer.config.config.task+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate))
 

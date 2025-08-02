@@ -245,10 +245,11 @@ class PreProcessedWarcraft(Dataset):
     """
     Data structure for a pre-processed dataset.  Extends PyTorch Dataset.
     """
-    def __init__(self, inputs, weights, labels, num_pts=-1):
+    def __init__(self, inputs, weights, labels, size, num_pts=-1):
         self.inputs = inputs
         self.weights = weights
         self.labels = labels
+        self.size = size
 
         if num_pts < 0:
             self.num_pts = inputs.shape[0]
@@ -259,15 +260,16 @@ class PreProcessedWarcraft(Dataset):
         return self.num_pts
 
     def __getitem__(self, idx):
+        # puzzle = 
         mean_ = self.weights[idx].mean()
         std_ = self.weights[idx].std()
         weights_norm = torch.tensor((self.weights[idx] - mean_) / std_)
         path = torch.tensor(self.labels[idx]).to(torch.float32)*2-1
         solution = torch.stack([weights_norm, path])
-        mask = torch.zeros((2, 12, 12), dtype=bool)
+        mask = torch.zeros((2, self.size, self.size), dtype=bool)
         mask[0] = True
         mask[1, 0, 0]  = True
-        mask[1, 11, 11] = True
+        mask[1, self.size-1, self.size-1] = True
         puzzle = solution * mask
         
         return {"puzzle": puzzle, "sol_onehot": solution, "sol": path, "mask": mask, "idx": idx}

@@ -30,11 +30,13 @@ if __name__ == "__main__":
     wandb.save('*.txt')
     
     if trainer.config.config.task=="sudoku":
-        root_path = os.path.join("exp", trainer.config.config.dataset+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_SFT"+trainer.config.ckpt_model)
+        root_path = os.path.join("exp", trainer.config.config.dataset+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_SL"+trainer.config.ckpt_model)
     elif trainer.config.config.task=="maze":
-        root_path = os.path.join("exp", "maze"+str(trainer.config.config.size)+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_SFT"+trainer.config.ckpt_model)
+        root_path = os.path.join("exp", "maze"+str(trainer.config.config.size)+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_SL"+trainer.config.ckpt_model)
+    elif trainer.config.config.task=="warcraft":
+        root_path = os.path.join("warcraft", trainer.config.config.task+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_SL"+trainer.config.ckpt_model+"_size"+str(trainer.config.config.size))
     else:
-        root_path = os.path.join("exp", trainer.config.config.task+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_SFT"+trainer.config.ckpt_model)
+        root_path = os.path.join("exp", trainer.config.config.task+"_"+trainer.config.name+"_"+str(trainer.config.train_learning_rate)+"_SL"+trainer.config.ckpt_model)
     
     if not os.path.exists(root_path):
         os.makedirs(root_path)
