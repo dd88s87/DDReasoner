@@ -2,8 +2,6 @@
 
 Official codebase for the paper:  **Constraints-Guided Diffusion Reasoner for Neuro-Symbolic Learning**
 
-[Our codebase is available at: https://anonymous.4open.science/r/DDReasoner-1D80]
-
 ---
 
 ## 🧠 Overview
